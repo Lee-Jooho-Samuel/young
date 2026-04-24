@@ -18,6 +18,8 @@
         body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif; background-color: #f3f4f6; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -32,12 +34,22 @@
                 action: null
             });
 
+            // 리더의 정리 숨기기/보이기 상태 관리
+            const [showSummary, setShowSummary] = React.useState({
+                q1: false,
+                q2: false
+            });
+
             const handleInputChange = (e) => {
                 const { name, value } = e.target;
                 setAnswers(prev => ({ ...prev, [name]: value }));
                 // textarea 자동 높이 조절
                 e.target.style.height = 'inherit';
                 e.target.style.height = `${e.target.scrollHeight}px`;
+            };
+
+            const toggleSummary = (q) => {
+                setShowSummary(prev => ({ ...prev, [q]: !prev[q] }));
             };
 
             const handleActionSelect = (index) => {
@@ -58,7 +70,7 @@
 
                 const textToCopy = `[나의 소그룹 결단 🙏]\n이번 주 저는 "${actionTexts[answers.action]}"\n기도로 응원해 주세요!`;
                 
-                // textarea를 이용한 클립보드 복사 (iFrame 환경 호환용)
+                // textarea를 이용한 클립보드 복사
                 const textarea = document.createElement("textarea");
                 textarea.value = textToCopy;
                 textarea.style.position = "fixed";
@@ -101,33 +113,72 @@
                         </section>
 
                         {/* Section 2 */}
-                        <section className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 space-y-5">
-                            <h2 className="text-lg font-bold text-gray-800 mb-2 flex items-center">
+                        <section className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 space-y-6">
+                            <h2 className="text-lg font-bold text-gray-800 flex items-center">
                                 <span className="bg-blue-100 text-blue-600 w-6 h-6 rounded-full flex items-center justify-center text-sm mr-2">2</span> 말씀 발견
                             </h2>
                             
+                            {/* Question 1 */}
                             <div>
                                 <p className="font-semibold text-gray-800 mb-2 leading-snug">Q1. 히브리서 4:12을 읽어봅시다. 여기서 하나님의 말씀을 무엇에 비유하고 있나요? 왜 하필 그 무기였을까요?</p>
+                                <div className="bg-gray-50 border-l-4 border-blue-400 p-3 mb-3 text-[13px] text-gray-600 rounded-r-lg font-serif leading-relaxed">
+                                    "하나님의 말씀은 살아 있고 활력이 있어 좌우에 날선 어떤 검보다도 예리하여 혼과 영과 및 관절과 골수를 찔러 쪼개기까지 하며 또 마음의 생각과 뜻을 판단하나니" (히브리서 4:12)
+                                </div>
                                 <textarea 
                                     name="q1" 
                                     value={answers.q1} 
                                     onChange={handleInputChange}
                                     placeholder="여기를 터치해서 나의 발견을 적어보세요..."
-                                    className="w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none overflow-hidden min-h-[80px]"
+                                    className="w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none overflow-hidden min-h-[80px] mb-2"
                                 />
+                                <button 
+                                    onClick={() => toggleSummary('q1')}
+                                    className="text-sm font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors flex items-center"
+                                >
+                                    <i className={`ph ${showSummary.q1 ? 'ph-caret-up' : 'ph-lightbulb'} mr-1.5`}></i>
+                                    {showSummary.q1 ? "리더의 정리 숨기기" : "리더의 정리 보기"}
+                                </button>
+                                
+                                {/* Q1 Leader's Summary */}
+                                {showSummary.q1 && (
+                                    <div className="fade-in mt-3 bg-blue-50 border border-blue-100 p-4 rounded-xl text-sm text-gray-700 leading-relaxed shadow-sm">
+                                        <p className="font-bold text-blue-800 mb-1">💡 리더의 정리</p>
+                                        당시 로마 군단병들이 쓰던 짧고 양쪽에 날이 선 검은 적의 갑옷 틈새를 파고들어 찌르는 치명적인 무기였습니다. 의사의 수술용 칼이 환자의 병든 부위를 갈라내듯, 살아있는 말씀은 우리가 스스로도 모르는 내면의 숨은 동기와 거짓된 핑계들을 날카롭게 해부하여 드러냅니다.
+                                    </div>
+                                )}
                             </div>
 
                             <hr className="border-gray-100" />
 
+                            {/* Question 2 */}
                             <div>
                                 <p className="font-semibold text-gray-800 mb-2 leading-snug">Q2. 내면을 찔러 쪼개는 성경의 궁극적인 목적, 유익은 무엇일까요? (디모데후서 3:16-17)</p>
+                                <div className="bg-gray-50 border-l-4 border-blue-400 p-3 mb-3 text-[13px] text-gray-600 rounded-r-lg font-serif leading-relaxed space-y-1">
+                                    <p>"모든 성경은 하나님의 감동으로 된 것으로 교훈과 책망과 바르게 함과 의로 교육하기에 유익하니"</p>
+                                    <p>"이는 하나님의 사람으로 온전하게 하며 모든 선한 일을 행할 능력을 갖추게 하려 함이라" (디모데후서 3:16-17)</p>
+                                </div>
                                 <textarea 
                                     name="q2" 
                                     value={answers.q2} 
                                     onChange={handleInputChange}
                                     placeholder="모든 성경은 교훈과 책망과 바르게 함과..."
-                                    className="w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none overflow-hidden min-h-[80px]"
+                                    className="w-full bg-gray-50 text-gray-700 border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none overflow-hidden min-h-[80px] mb-2"
                                 />
+                                <button 
+                                    onClick={() => toggleSummary('q2')}
+                                    className="text-sm font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-lg transition-colors flex items-center"
+                                >
+                                    <i className={`ph ${showSummary.q2 ? 'ph-caret-up' : 'ph-lightbulb'} mr-1.5`}></i>
+                                    {showSummary.q2 ? "리더의 정리 숨기기" : "리더의 정리 보기"}
+                                </button>
+                                
+                                {/* Q2 Leader's Summary */}
+                                {showSummary.q2 && (
+                                    <div className="fade-in mt-3 bg-blue-50 border border-blue-100 p-4 rounded-xl text-sm text-gray-700 leading-relaxed shadow-sm">
+                                        <p className="font-bold text-blue-800 mb-1">💡 리더의 정리</p>
+                                        바울은 "모든 성경은 교훈과 책망과 바르게 함과 의로 교육하기에 유익하니"(딤후 3:16)라고 말합니다. 성경은 단순히 내 마음을 편안하게 해주는 수면제가 아니라, 잘못된 길에서 돌이켜 바르게 살아가도록 돕는 '치료제'입니다.
+                                    </div>
+                                )}
                             </div>
                         </section>
 
@@ -174,7 +225,7 @@
                             <div className="space-y-3">
                                 {[
                                     { title: "먼지 쌓인 성경책 열기", desc: "이번 주 하루, 5분만 시편 23편 3번 읽기", badge: "초급" },
-                                    { title: "찔리는 말씀 피하지 않기", desc: "안식일 설교 중 찔리는 말씀 메모하고 고민하기", badge: "중급" },
+                                    { title: "찔리는 말씀 피하지하기", desc: "안식일 설교 중 찔리는 말씀 메모하고 고민하기", badge: "중급" },
                                     { title: "'말씀 거울' 일기 쓰기", desc: "매일 10분 복음서 읽고 회개/감사 일기 쓰기", badge: "도전" }
                                 ].map((item, index) => (
                                     <div 
