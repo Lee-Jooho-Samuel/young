@@ -341,6 +341,13 @@
     </div>
     <div class="gospel">
       <p class="question"><span class="q-num">Q.</span> 죽음 앞에서도 하나님을 향한 창문을 닫지 않은 다니엘의 모습은, 우리를 향한 예수님의 어떤 모습을 떠올리게 합니까?</p>
+      <textarea class="answer-input" id="input-gospel" placeholder="여기에 생각을 적어 보세요…"></textarea>
+      <div class="submit-row">
+        <button class="submit-btn" id="btn-gospel">
+          <span class="icon">↑</span> 보내기
+        </button>
+      </div>
+      <div id="answers-gospel" class="shared-answers"></div>
       <button class="toggle-btn" id="toggle-gospel">
         <span class="arrow">▶</span><span class="toggle-text"> 해설 보기</span>
       </button>
@@ -384,7 +391,13 @@
     </div>
     <div class="commitment">
       <div class="commitment-label">✍ 나의 결심</div>
-      <textarea class="answer-input commitment-input" placeholder="이번 주, 내가 해보고 싶은 것을 적어 보세요…"></textarea>
+      <textarea class="answer-input commitment-input" id="input-commit" placeholder="이번 주, 내가 해보고 싶은 것을 적어 보세요…"></textarea>
+      <div class="submit-row">
+        <button class="submit-btn" id="btn-commit">
+          <span class="icon">↑</span> 보내기
+        </button>
+      </div>
+      <div id="answers-commit" class="shared-answers"></div>
     </div>
   </div>
 
@@ -431,7 +444,7 @@
   };
 
   // ── 보내기 버튼 ──
-  var qIds = ['q1', 'q2', 'q3'];
+  var qIds = ['q1', 'q2', 'q3', 'gospel', 'commit'];
   qIds.forEach(function(qId) {
     var btn = document.getElementById('btn-' + qId);
     if (!btn) return;
@@ -545,7 +558,7 @@
         setTimeout(function() { statusEl.classList.remove('show'); }, 3000);
 
         // 실시간 리스너 시작
-        ['q1', 'q2', 'q3'].forEach(function(qId) {
+        ['q1', 'q2', 'q3', 'gospel', 'commit'].forEach(function(qId) {
           window.firebaseDB.ref(window.LESSON_ID + '/' + qId).on('child_added', function(s) {
             var d = s.val();
             if (d && d.text) window.addBubble(qId, d.text);
