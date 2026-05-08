@@ -21,9 +21,7 @@
     --shadow: 0 2px 12px rgba(44, 41, 38, 0.06);
     --radius: 12px;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     font-family: 'Noto Sans KR', sans-serif;
     background: var(--bg);
@@ -32,394 +30,191 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
   }
-
   .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
+    position: fixed; top: 0; left: 0; width: 0%; height: 3px;
     background: linear-gradient(90deg, var(--accent), #D4A017);
-    z-index: 1000;
-    transition: width 0.1s linear;
+    z-index: 1000; transition: width 0.1s linear;
   }
-
-  .container {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
-
+  .container { max-width: 640px; margin: 0 auto; padding: 40px 24px 80px; }
   .header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--border);
+    text-align: center; margin-bottom: 40px;
+    padding-bottom: 32px; border-bottom: 1px solid var(--border);
   }
-
   .header .label {
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 16px;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 16px;
   }
-
   .header h1 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.4;
-    color: var(--text);
+    font-family: 'Noto Serif KR', serif; font-size: 28px;
+    font-weight: 700; line-height: 1.4; color: var(--text);
   }
-
   .memory-verse {
-    background: var(--accent-light);
-    border-left: 3px solid var(--accent);
-    padding: 20px 24px;
-    border-radius: 0 var(--radius) var(--radius) 0;
+    background: var(--accent-light); border-left: 3px solid var(--accent);
+    padding: 20px 24px; border-radius: 0 var(--radius) var(--radius) 0;
     margin-bottom: 36px;
   }
-
   .memory-verse .mv-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    font-size: 12px; font-weight: 700; color: var(--accent);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;
   }
-
   .memory-verse p {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 15px;
-    line-height: 1.9;
-    color: var(--text);
+    font-family: 'Noto Serif KR', serif; font-size: 15px;
+    line-height: 1.9; color: var(--text);
   }
-
   .memory-verse .mv-ref {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 8px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 13px;
+    color: var(--text-muted); margin-top: 8px;
   }
-
-  .intro {
-    font-size: 15.5px;
-    line-height: 1.9;
-    color: var(--text);
-    margin-bottom: 40px;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--divider);
-    margin: 36px 0;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-
+  .intro { font-size: 15.5px; line-height: 1.9; color: var(--text); margin-bottom: 40px; }
+  .divider { border: none; border-top: 1px solid var(--divider); margin: 36px 0; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
   .section-header .icon { font-size: 22px; line-height: 1; }
-
   .section-header h2 {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--text);
+    font-family: 'Noto Serif KR', serif; font-size: 19px;
+    font-weight: 700; color: var(--text);
   }
-
   .scripture {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    margin-bottom: 32px;
-    box-shadow: var(--shadow);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px;
+    margin-bottom: 32px; box-shadow: var(--shadow);
   }
-
   .scripture p {
-    font-family: 'Noto Serif KR', serif;
-    font-size: 15px;
-    line-height: 2;
-    color: var(--text);
+    font-family: 'Noto Serif KR', serif; font-size: 15px;
+    line-height: 2; color: var(--text);
   }
-
   .qa-block { margin-bottom: 28px; }
-
   .question {
-    font-size: 15.5px;
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.7;
-    margin-bottom: 12px;
+    font-size: 15.5px; font-weight: 700; color: var(--text);
+    line-height: 1.7; margin-bottom: 12px;
   }
-
   .question .q-num { color: var(--accent); font-weight: 700; }
-
   .answer-input {
-    width: 100%;
-    min-height: 80px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14.5px;
-    line-height: 1.7;
-    color: var(--text);
-    background: var(--q-bg);
-    resize: vertical;
-    transition: border-color 0.2s;
-    margin-bottom: 8px;
+    width: 100%; min-height: 80px; padding: 14px 16px;
+    border: 1px solid var(--border); border-radius: 8px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 14.5px;
+    line-height: 1.7; color: var(--text); background: var(--q-bg);
+    resize: vertical; transition: border-color 0.2s; margin-bottom: 8px;
   }
-
   .answer-input::placeholder { color: #B5AFA6; }
-
   .answer-input:focus {
-    outline: none;
-    border-color: var(--accent);
+    outline: none; border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
   }
-
-  .submit-row {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 12px;
-  }
-
+  .submit-row { display: flex; justify-content: flex-end; margin-bottom: 12px; }
   .submit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 20px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13.5px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent); color: #fff; border: none;
+    border-radius: 20px; padding: 8px 20px;
+    font-family: 'Noto Sans KR', sans-serif; font-size: 13.5px;
+    font-weight: 500; cursor: pointer; transition: all 0.2s;
   }
-
   .submit-btn:hover { background: #9A7209; transform: translateY(-1px); }
   .submit-btn:active { transform: translateY(0); }
-  .submit-btn:disabled { background: var(--divider); cursor: not-allowed; transform: none; }
   .submit-btn .icon { font-size: 14px; }
-
   .shared-answers { margin-bottom: 12px; }
-
   .shared-answers-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    letter-spacing: 1px; margin-bottom: 8px;
   }
-
   .answer-bubble {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 16px;
-    margin-bottom: 6px;
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--text);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 16px; margin-bottom: 6px;
+    font-size: 14px; line-height: 1.75; color: var(--text);
     animation: fadeIn 0.3s ease;
   }
-
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   .toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--toggle-bg);
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--toggle-bg); border: none; border-radius: 20px;
+    padding: 8px 16px; font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13.5px; font-weight: 500; color: var(--text-muted);
+    cursor: pointer; transition: all 0.2s; user-select: none;
   }
-
   .toggle-btn:hover { background: var(--accent-light); color: var(--accent); }
-
   .toggle-btn .arrow {
-    display: inline-block;
-    font-size: 11px;
-    transition: transform 0.3s ease;
+    display: inline-block; font-size: 11px; transition: transform 0.3s ease;
   }
-
   .toggle-btn.open .arrow { transform: rotate(90deg); }
-
   .commentary {
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
+    overflow: hidden; max-height: 0; opacity: 0;
     transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
     margin-top: 0;
   }
-
-  .commentary.visible {
-    max-height: 600px;
-    opacity: 1;
-    margin-top: 12px;
-  }
-
+  .commentary.visible { max-height: 600px; opacity: 1; margin-top: 12px; }
   .commentary-inner {
-    background: var(--q-bg);
-    border-left: 3px solid var(--border);
-    padding: 18px 20px;
-    border-radius: 0 8px 8px 0;
-    font-size: 14.5px;
-    line-height: 1.9;
-    color: var(--text);
+    background: var(--q-bg); border-left: 3px solid var(--border);
+    padding: 18px 20px; border-radius: 0 8px 8px 0;
+    font-size: 14.5px; line-height: 1.9; color: var(--text);
   }
-
   .locked-section {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
+    opacity: 0; max-height: 0; overflow: hidden;
     transition: opacity 0.5s ease, max-height 0.6s ease;
     pointer-events: none;
   }
-
-  .locked-section.unlocked {
-    opacity: 1;
-    max-height: 3000px;
-    pointer-events: auto;
-  }
-
+  .locked-section.unlocked { opacity: 1; max-height: 3000px; pointer-events: auto; }
   .next-nudge {
-    text-align: center;
-    padding: 24px 0;
-    font-size: 13.5px;
-    color: var(--text-muted);
-    display: none;
+    text-align: center; padding: 24px 0; font-size: 13.5px;
+    color: var(--text-muted); display: none;
   }
-
-  .next-nudge.visible {
-    display: block;
-    animation: fadeIn 0.5s ease;
-  }
-
+  .next-nudge.visible { display: block; animation: fadeIn 0.5s ease; }
   .next-nudge .arrow-down {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 4px;
+    display: block; font-size: 18px; margin-bottom: 4px;
     animation: bounce 1.5s ease infinite;
   }
-
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(4px); }
   }
-
   .gospel {
     background: linear-gradient(135deg, #FBF8F1 0%, #F5EDDA 100%);
-    border: 1px solid var(--accent-light);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    margin-bottom: 8px;
+    border: 1px solid var(--accent-light); border-radius: var(--radius);
+    padding: 28px 24px; margin-bottom: 8px;
   }
-
   .gospel .question { margin-bottom: 12px; }
   .gospel .commentary-inner { background: rgba(255,255,255,0.5); border-left-color: var(--accent); }
-
   .practice { margin-top: 8px; }
-
   .practice-item {
-    display: flex;
-    gap: 14px;
-    padding: 16px 0;
+    display: flex; gap: 14px; padding: 16px 0;
     border-bottom: 1px solid var(--border);
-    font-size: 14.5px;
-    line-height: 1.85;
+    font-size: 14.5px; line-height: 1.85;
   }
-
   .practice-item:last-child { border-bottom: none; }
-
   .practice-item .bullet {
-    flex-shrink: 0;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-top: 10px;
+    flex-shrink: 0; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent); margin-top: 10px;
   }
-
   .practice-item .reason { color: var(--text-muted); font-size: 13.5px; }
   .practice-item .action { font-weight: 500; color: var(--text); }
-
   .commitment {
-    margin-top: 28px;
-    padding-top: 24px;
+    margin-top: 28px; padding-top: 24px;
     border-top: 1px dashed var(--border);
   }
-
   .commitment-label {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 10px;
+    font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 10px;
   }
-
   .commitment-input { min-height: 90px; }
-
   .footer {
-    text-align: center;
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.5px;
+    text-align: center; margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid var(--border); font-size: 12px;
+    color: var(--text-muted); letter-spacing: 0.5px;
   }
-
   .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
+    position: fixed; bottom: 24px; left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--text);
-    color: #fff;
-    padding: 10px 24px;
-    border-radius: 24px;
-    font-size: 13.5px;
+    background: var(--text); color: #fff; padding: 10px 24px;
+    border-radius: 24px; font-size: 13.5px;
     font-family: 'Noto Sans KR', sans-serif;
-    z-index: 999;
-    opacity: 0;
-    transition: all 0.3s ease;
-    pointer-events: none;
+    z-index: 999; opacity: 0; transition: all 0.3s ease; pointer-events: none;
   }
-
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  .connection-status {
-    text-align: center;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    display: none;
+  .fb-status {
+    text-align: center; font-size: 11px; color: #999;
+    margin-bottom: 16px; display: none;
   }
-
-  .connection-status.offline { display: block; color: #c0392b; }
-
+  .fb-status.show { display: block; }
   @media (max-width: 480px) {
     .container { padding: 28px 18px 60px; }
     .header h1 { font-size: 24px; }
@@ -441,9 +236,7 @@
     <h1>흔들리지 않는 습관</h1>
   </div>
 
-  <div class="connection-status" id="connectionStatus">
-    ⚠ 서버에 연결되지 않았습니다. 답변은 이 화면에서만 보입니다.
-  </div>
+  <div class="fb-status" id="fbStatus"></div>
 
   <div class="memory-verse">
     <div class="mv-label">기억절</div>
@@ -467,17 +260,19 @@
   </div>
 
   <!-- Q1 -->
-  <div class="qa-block" id="q1-block">
+  <div class="qa-block">
     <p class="question"><span class="q-num">Q1.</span> 이 두 절에서 다니엘의 기도 모습을 자세히 보면, 어떤 것들이 눈에 들어옵니까?</p>
     <textarea class="answer-input" id="input-q1" placeholder="여기에 생각을 적어 보세요…"></textarea>
     <div class="submit-row">
-      <button class="submit-btn" onclick="submitAnswer('q1')"><span class="icon">↑</span> 보내기</button>
+      <button class="submit-btn" id="btn-q1">
+        <span class="icon">↑</span> 보내기
+      </button>
     </div>
-    <div class="shared-answers" id="answers-q1"></div>
-    <button class="toggle-btn" onclick="toggleCommentary(this, 'q1')">
-      <span class="arrow">▶</span> 해설 보기
+    <div id="answers-q1" class="shared-answers"></div>
+    <button class="toggle-btn" id="toggle-q1">
+      <span class="arrow">▶</span><span class="toggle-text"> 해설 보기</span>
     </button>
-    <div class="commentary">
+    <div class="commentary" id="comm-q1">
       <div class="commentary-inner">
         윗방, 예루살렘을 향한 열린 창문, 하루 세 번, 무릎 꿇기, 감사. 성경이 이 장면을 이렇게 세밀하게 그린 이유가 있습니다. 특별히 "전에 하던 대로"라는 말이 중요합니다. 위기가 와서 새로 꺼낸 행동이 아니라, 위기 전부터 이어오던 삶의 리듬이 드러난 것이지요.
       </div>
@@ -491,23 +286,24 @@
 
   <!-- Q2 (locked) -->
   <div class="locked-section" id="section-q2">
-    <div class="qa-block" id="q2-block">
+    <div class="qa-block">
       <p class="question"><span class="q-num">Q2.</span> 왕이 아닌 다른 신에게 기도하면 사자 굴에 던져 넣겠다는 조서가 내려진 상황입니다. 숨어서 기도할 수도, 횟수를 줄일 수도, 창문을 닫을 수도 있었는데, 다니엘이 아무것도 바꾸지 않았다는 건 어떤 뜻일까요?</p>
       <textarea class="answer-input" id="input-q2" placeholder="여기에 생각을 적어 보세요…"></textarea>
       <div class="submit-row">
-        <button class="submit-btn" onclick="submitAnswer('q2')"><span class="icon">↑</span> 보내기</button>
+        <button class="submit-btn" id="btn-q2">
+          <span class="icon">↑</span> 보내기
+        </button>
       </div>
-      <div class="shared-answers" id="answers-q2"></div>
-      <button class="toggle-btn" onclick="toggleCommentary(this, 'q2')">
-        <span class="arrow">▶</span> 해설 보기
+      <div id="answers-q2" class="shared-answers"></div>
+      <button class="toggle-btn" id="toggle-q2">
+        <span class="arrow">▶</span><span class="toggle-text"> 해설 보기</span>
       </button>
-      <div class="commentary">
+      <div class="commentary" id="comm-q2">
         <div class="commentary-inner">
           고집을 부린 것이 아닙니다. 다니엘에게 하나님과 만나는 시간은 상황에 따라 조절하거나 몰래 숨길 수 있는 종류의 일이 아니었습니다. 기도는 그에게 종교 행사가 아니라 '생명의 숨'이었습니다. 왕의 명령은 다니엘의 몸을 위협했지만, 그의 하루 중심까지 바꾸지는 못했습니다.
         </div>
       </div>
     </div>
-
     <div class="next-nudge" id="nudge-q2">
       <span class="arrow-down">↓</span>
       다음 질문으로 넘어갑니다
@@ -516,17 +312,19 @@
 
   <!-- Q3 (locked) -->
   <div class="locked-section" id="section-q3">
-    <div class="qa-block" id="q3-block">
+    <div class="qa-block">
       <p class="question"><span class="q-num">Q3.</span> 바쁘거나 힘든 시기가 오면, 나의 영적인 리듬에는 어떤 일이 벌어집니까?</p>
       <textarea class="answer-input" id="input-q3" placeholder="여기에 생각을 적어 보세요…"></textarea>
       <div class="submit-row">
-        <button class="submit-btn" onclick="submitAnswer('q3')"><span class="icon">↑</span> 보내기</button>
+        <button class="submit-btn" id="btn-q3">
+          <span class="icon">↑</span> 보내기
+        </button>
       </div>
-      <div class="shared-answers" id="answers-q3"></div>
-      <button class="toggle-btn" onclick="toggleCommentary(this, 'q3')">
-        <span class="arrow">▶</span> 해설 보기
+      <div id="answers-q3" class="shared-answers"></div>
+      <button class="toggle-btn" id="toggle-q3">
+        <span class="arrow">▶</span><span class="toggle-text"> 해설 보기</span>
       </button>
-      <div class="commentary">
+      <div class="commentary" id="comm-q3">
         <div class="commentary-inner">
           대부분의 사람은 압박이 오면 기도를 줄입니다. 바쁘니까, 지쳤으니까, 당장 급한 일이 있으니까. 그런데 다니엘은 정반대였습니다. 이 차이는 의지의 문제가 아니라, 기도가 의무인지 관계인지의 차이에서 옵니다. 기도가 만남의 자리라면 쉽게 내려놓을 수가 없습니다.
         </div>
@@ -543,10 +341,10 @@
     </div>
     <div class="gospel">
       <p class="question"><span class="q-num">Q.</span> 죽음 앞에서도 하나님을 향한 창문을 닫지 않은 다니엘의 모습은, 우리를 향한 예수님의 어떤 모습을 떠올리게 합니까?</p>
-      <button class="toggle-btn" onclick="toggleCommentary(this, 'gospel')">
-        <span class="arrow">▶</span> 해설 보기
+      <button class="toggle-btn" id="toggle-gospel">
+        <span class="arrow">▶</span><span class="toggle-text"> 해설 보기</span>
       </button>
-      <div class="commentary">
+      <div class="commentary" id="comm-gospel">
         <div class="commentary-inner">
           우리는 작은 두려움 앞에서도 하나님을 향한 마음의 창문을 너무 쉽게 닫아버립니다. 그런데 예수님께서는 십자가라는 가장 끔찍한 죽음 앞에서도 우리를 향한 창문을 닫지 않으셨습니다. 겟세마네에서 땀이 피처럼 떨어지는 가운데에도 아버지를 부르셨고, 십자가 위에서도 죄인을 위해 기도하셨습니다. 우리의 약한 기도보다 먼저, 예수님의 사랑과 중보가 우리를 붙들고 있습니다. 그래서 기도의 시작은 "다니엘처럼 되겠다"는 결심이 아니라, 이미 우리를 위해 기도하시는 분께 응답하는 것입니다.
         </div>
@@ -584,8 +382,6 @@
         </div>
       </div>
     </div>
-
-    <!-- 나의 결심 -->
     <div class="commitment">
       <div class="commitment-label">✍ 나의 결심</div>
       <textarea class="answer-input commitment-input" placeholder="이번 주, 내가 해보고 싶은 것을 적어 보세요…"></textarea>
@@ -598,147 +394,176 @@
 
 </div>
 
-<!-- Firebase SDK (compat 방식 — import 문법 쓰지 않음) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
+<!-- ============================== -->
+<!--  1) 핵심 UI 로직 (Firebase 무관) -->
+<!-- ============================== -->
 <script>
-// ============================================================
-//  🔧 Firebase 설정 (수지교회 청년부)
-// ============================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyCgw2a3UIhGlmzGbjaO5btbk3j7dN8p_MA",
-  authDomain: "suji-youth-ss.firebaseapp.com",
-  databaseURL: "https://suji-youth-ss-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "suji-youth-ss",
-  storageBucket: "suji-youth-ss.firebasestorage.app",
-  messagingSenderId: "822402200072",
-  appId: "1:822402200072:web:481097795183b6d2e857bd"
-};
-
-// 과 식별자 (다른 과를 만들 때 여기만 변경)
-const LESSON_ID = 'lesson06';
-// ============================================================
-
-let db = null;
-let isFirebaseReady = false;
-
-try {
-  firebase.initializeApp(firebaseConfig);
-  db = firebase.database();
-  db.ref('.info/connected').on('value', (snap) => {
-    const el = document.getElementById('connectionStatus');
-    if (snap.val() === true) {
-      isFirebaseReady = true;
-      el.classList.remove('offline');
-      startListeners();
-    } else {
-      el.classList.add('offline');
-    }
+(function() {
+  // ── 스크롤 진행률 ──
+  window.addEventListener('scroll', function() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    document.getElementById('scrollProgress').style.width = pct + '%';
   });
-} catch (e) {
-  console.log('Firebase 초기화 실패:', e);
-}
 
-// ── 스크롤 진행률 ──
-window.addEventListener('scroll', () => {
-  const h = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
-  document.getElementById('scrollProgress').style.width = pct + '%';
-});
+  // ── 토스트 ──
+  window.showToast = function(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 2000);
+  };
 
-// ── 토스트 ──
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
+  // ── 답변 버블 추가 ──
+  window.addBubble = function(qId, text) {
+    var box = document.getElementById('answers-' + qId);
+    if (!box) return;
+    if (!box.querySelector('.shared-answers-label')) {
+      var lbl = document.createElement('div');
+      lbl.className = 'shared-answers-label';
+      lbl.textContent = '함께 나눈 생각들';
+      box.appendChild(lbl);
+    }
+    var b = document.createElement('div');
+    b.className = 'answer-bubble';
+    b.textContent = text;
+    box.appendChild(b);
+  };
 
-// ── 답변 제출 ──
-function submitAnswer(qId) {
-  const input = document.getElementById('input-' + qId);
-  const text = input.value.trim();
-  if (!text) { showToast('답변을 입력해 주세요'); return; }
+  // ── 보내기 버튼 ──
+  var qIds = ['q1', 'q2', 'q3'];
+  qIds.forEach(function(qId) {
+    var btn = document.getElementById('btn-' + qId);
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var input = document.getElementById('input-' + qId);
+      var text = input.value.trim();
+      if (!text) { showToast('답변을 입력해 주세요'); return; }
 
-  if (isFirebaseReady && db) {
-    db.ref(LESSON_ID + '/' + qId).push({ text: text, ts: Date.now() });
-  } else {
-    addBubble(qId, text);
-  }
-  input.value = '';
-  showToast('보냈습니다!');
-}
-
-// ── 버블 추가 ──
-function addBubble(qId, text) {
-  const box = document.getElementById('answers-' + qId);
-  if (!box) return;
-  if (!box.querySelector('.shared-answers-label')) {
-    const lbl = document.createElement('div');
-    lbl.className = 'shared-answers-label';
-    lbl.textContent = '함께 나눈 생각들';
-    box.appendChild(lbl);
-  }
-  const b = document.createElement('div');
-  b.className = 'answer-bubble';
-  b.textContent = text;
-  box.appendChild(b);
-}
-
-// ── 실시간 리스너 ──
-var listened = {};
-function startListeners() {
-  ['q1','q2','q3'].forEach(function(qId) {
-    if (listened[qId]) return;
-    listened[qId] = true;
-    db.ref(LESSON_ID + '/' + qId).on('child_added', function(snap) {
-      var d = snap.val();
-      if (d && d.text) addBubble(qId, d.text);
+      // Firebase로 보내기 (연결된 경우)
+      if (window.firebaseDB) {
+        window.firebaseDB.ref(window.LESSON_ID + '/' + qId).push({
+          text: text, ts: Date.now()
+        });
+      } else {
+        // 오프라인: 로컬에만 표시
+        addBubble(qId, text);
+      }
+      input.value = '';
+      showToast('보냈습니다!');
     });
   });
-}
 
-// ── 단계적 열림 ──
-var steps = [
-  { trigger: 'q1', unlock: 'section-q2', nudge: 'nudge-q1' },
-  { trigger: 'q2', unlock: 'section-q3', nudge: 'nudge-q2' },
-  { trigger: 'q3', unlock: 'section-gospel', nudge: null },
-  { trigger: 'gospel', unlock: 'section-practice', nudge: null }
-];
+  // ── 단계적 열림 설정 ──
+  var steps = [
+    { trigger: 'q1', unlock: 'section-q2', nudge: 'nudge-q1' },
+    { trigger: 'q2', unlock: 'section-q3', nudge: 'nudge-q2' },
+    { trigger: 'q3', unlock: 'section-gospel', nudge: null },
+    { trigger: 'gospel', unlock: 'section-practice', nudge: null }
+  ];
 
-function toggleCommentary(btn, qId) {
-  var comm = btn.nextElementSibling;
-  var isOpen = comm.classList.contains('visible');
+  // ── 해설 토글 ──
+  var toggleIds = ['q1', 'q2', 'q3', 'gospel'];
+  toggleIds.forEach(function(qId) {
+    var btn = document.getElementById('toggle-' + qId);
+    var comm = document.getElementById('comm-' + qId);
+    if (!btn || !comm) return;
 
-  if (isOpen) {
-    comm.classList.remove('visible');
-    btn.classList.remove('open');
-    btn.childNodes[btn.childNodes.length - 1].textContent = ' 해설 보기';
-  } else {
-    comm.classList.add('visible');
-    btn.classList.add('open');
-    btn.childNodes[btn.childNodes.length - 1].textContent = ' 해설 닫기';
+    btn.addEventListener('click', function() {
+      var isOpen = comm.classList.contains('visible');
 
-    var step = null;
-    for (var i = 0; i < steps.length; i++) {
-      if (steps[i].trigger === qId) { step = steps[i]; break; }
-    }
-    if (step) {
-      if (step.nudge) document.getElementById(step.nudge).classList.add('visible');
-      setTimeout(function() {
-        var next = document.getElementById(step.unlock);
-        if (next && !next.classList.contains('unlocked')) {
-          next.classList.add('unlocked');
-          setTimeout(function() {
-            if (step.nudge) document.getElementById(step.nudge).classList.remove('visible');
-            next.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 400);
+      if (isOpen) {
+        comm.classList.remove('visible');
+        btn.classList.remove('open');
+        btn.querySelector('.toggle-text').textContent = ' 해설 보기';
+      } else {
+        comm.classList.add('visible');
+        btn.classList.add('open');
+        btn.querySelector('.toggle-text').textContent = ' 해설 닫기';
+
+        // 다음 섹션 열기
+        var step = null;
+        for (var i = 0; i < steps.length; i++) {
+          if (steps[i].trigger === qId) { step = steps[i]; break; }
         }
-      }, 600);
-    }
+        if (step) {
+          if (step.nudge) {
+            document.getElementById(step.nudge).classList.add('visible');
+          }
+          setTimeout(function() {
+            var next = document.getElementById(step.unlock);
+            if (next && !next.classList.contains('unlocked')) {
+              next.classList.add('unlocked');
+              setTimeout(function() {
+                if (step.nudge) {
+                  document.getElementById(step.nudge).classList.remove('visible');
+                }
+                next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 400);
+            }
+          }, 600);
+        }
+      }
+    });
+  });
+
+  console.log('✅ UI 초기화 완료');
+})();
+</script>
+
+<!-- ============================== -->
+<!--  2) Firebase (선택 — 없어도 UI 작동) -->
+<!-- ============================== -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+(function() {
+  window.LESSON_ID = 'lesson06';
+  window.firebaseDB = null;
+
+  try {
+    var config = {
+      apiKey: "AIzaSyCgw2a3UIhGlmzGbjaO5btbk3j7dN8p_MA",
+      authDomain: "suji-youth-ss.firebaseapp.com",
+      databaseURL: "https://suji-youth-ss-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "suji-youth-ss",
+      storageBucket: "suji-youth-ss.firebasestorage.app",
+      messagingSenderId: "822402200072",
+      appId: "1:822402200072:web:481097795183b6d2e857bd"
+    };
+
+    firebase.initializeApp(config);
+    window.firebaseDB = firebase.database();
+    console.log('✅ Firebase 초기화 성공');
+
+    // 연결 상태 표시
+    var statusEl = document.getElementById('fbStatus');
+    window.firebaseDB.ref('.info/connected').on('value', function(snap) {
+      if (snap.val() === true) {
+        statusEl.textContent = '🟢 실시간 연결됨';
+        statusEl.classList.add('show');
+        setTimeout(function() { statusEl.classList.remove('show'); }, 3000);
+
+        // 실시간 리스너 시작
+        ['q1', 'q2', 'q3'].forEach(function(qId) {
+          window.firebaseDB.ref(window.LESSON_ID + '/' + qId).on('child_added', function(s) {
+            var d = s.val();
+            if (d && d.text) window.addBubble(qId, d.text);
+          });
+        });
+      } else {
+        statusEl.textContent = '⚠ 서버 연결 대기 중…';
+        statusEl.classList.add('show');
+      }
+    });
+
+  } catch (e) {
+    console.log('⚠ Firebase 연결 실패 (오프라인 모드):', e.message);
+    var statusEl = document.getElementById('fbStatus');
+    statusEl.textContent = '오프라인 모드 — 답변은 이 화면에서만 보입니다';
+    statusEl.classList.add('show');
   }
-}
+})();
 </script>
 </body>
 </html>
