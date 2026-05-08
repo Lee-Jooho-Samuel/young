@@ -33,7 +33,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Scroll Progress Bar */
   .scroll-progress {
     position: fixed;
     top: 0;
@@ -292,7 +291,6 @@
     color: var(--text);
   }
 
-  /* Step-by-step locked sections */
   .locked-section {
     opacity: 0;
     max-height: 0;
@@ -381,9 +379,7 @@
     margin-bottom: 10px;
   }
 
-  .commitment-input {
-    min-height: 90px;
-  }
+  .commitment-input { min-height: 90px; }
 
   .footer {
     text-align: center;
@@ -602,22 +598,14 @@
 
 </div>
 
-<!-- Firebase SDK -->
+<!-- Firebase SDK (compat 방식 — import 문법 쓰지 않음) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
 <script>
 // ============================================================
-//  🔧 Firebase 설정
-//  아래 값을 본인의 Firebase 프로젝트 정보로 교체하세요.
-//  설정 방법은 함께 드린 가이드를 참고해 주세요.
+//  🔧 Firebase 설정 (수지교회 청년부)
 // ============================================================
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCgw2a3UIhGlmzGbjaO5btbk3j7dN8p_MA",
   authDomain: "suji-youth-ss.firebaseapp.com",
@@ -627,9 +615,6 @@ const firebaseConfig = {
   messagingSenderId: "822402200072",
   appId: "1:822402200072:web:481097795183b6d2e857bd"
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 // 과 식별자 (다른 과를 만들 때 여기만 변경)
 const LESSON_ID = 'lesson06';
@@ -652,7 +637,7 @@ try {
     }
   });
 } catch (e) {
-  console.log('Firebase 미설정 — 오프라인 모드');
+  console.log('Firebase 초기화 실패:', e);
 }
 
 // ── 스크롤 진행률 ──
@@ -677,7 +662,7 @@ function submitAnswer(qId) {
   if (!text) { showToast('답변을 입력해 주세요'); return; }
 
   if (isFirebaseReady && db) {
-    db.ref(LESSON_ID + '/' + qId).push({ text, ts: Date.now() });
+    db.ref(LESSON_ID + '/' + qId).push({ text: text, ts: Date.now() });
   } else {
     addBubble(qId, text);
   }
@@ -702,20 +687,20 @@ function addBubble(qId, text) {
 }
 
 // ── 실시간 리스너 ──
-const listened = new Set();
+var listened = {};
 function startListeners() {
-  ['q1','q2','q3'].forEach(qId => {
-    if (listened.has(qId)) return;
-    listened.add(qId);
-    db.ref(LESSON_ID + '/' + qId).on('child_added', snap => {
-      const d = snap.val();
+  ['q1','q2','q3'].forEach(function(qId) {
+    if (listened[qId]) return;
+    listened[qId] = true;
+    db.ref(LESSON_ID + '/' + qId).on('child_added', function(snap) {
+      var d = snap.val();
       if (d && d.text) addBubble(qId, d.text);
     });
   });
 }
 
 // ── 단계적 열림 ──
-const steps = [
+var steps = [
   { trigger: 'q1', unlock: 'section-q2', nudge: 'nudge-q1' },
   { trigger: 'q2', unlock: 'section-q3', nudge: 'nudge-q2' },
   { trigger: 'q3', unlock: 'section-gospel', nudge: null },
@@ -723,8 +708,8 @@ const steps = [
 ];
 
 function toggleCommentary(btn, qId) {
-  const comm = btn.nextElementSibling;
-  const isOpen = comm.classList.contains('visible');
+  var comm = btn.nextElementSibling;
+  var isOpen = comm.classList.contains('visible');
 
   if (isOpen) {
     comm.classList.remove('visible');
@@ -735,14 +720,17 @@ function toggleCommentary(btn, qId) {
     btn.classList.add('open');
     btn.childNodes[btn.childNodes.length - 1].textContent = ' 해설 닫기';
 
-    const step = steps.find(s => s.trigger === qId);
+    var step = null;
+    for (var i = 0; i < steps.length; i++) {
+      if (steps[i].trigger === qId) { step = steps[i]; break; }
+    }
     if (step) {
       if (step.nudge) document.getElementById(step.nudge).classList.add('visible');
-      setTimeout(() => {
-        const next = document.getElementById(step.unlock);
+      setTimeout(function() {
+        var next = document.getElementById(step.unlock);
         if (next && !next.classList.contains('unlocked')) {
           next.classList.add('unlocked');
-          setTimeout(() => {
+          setTimeout(function() {
             if (step.nudge) document.getElementById(step.nudge).classList.remove('visible');
             next.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 400);
